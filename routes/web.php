@@ -18,6 +18,10 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'],function(){
     Route::get('/menu', 'HomeController@menu')->name('menu');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::post('/contact/store', 'ContactController@store')->name('contact.store');
+    Route::get('/cart', 'CartController@cart')->name('cart');
+    Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('add-to-cart');
+    Route::patch('/update-cart', 'CartController@update')->name('update-cart');
+    Route::delete('/remove-from-cart', 'CartController@remove')->name('remove-from-cart');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'],function(){

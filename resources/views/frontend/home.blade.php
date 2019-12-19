@@ -52,7 +52,7 @@
                                             <p class="card-text">{{ $product->description }}</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-outline-danger">Satın Al</button>
+                                                    <a href="{{ route('frontend.add-to-cart', ['id' => $product->id]) }}" class="btn btn-sm btn-outline-danger">Satın Al</a>
                                                 </div>
                                                 <small class="text-muted">{{ $product->price }} ₺</small>
                                             </div>
