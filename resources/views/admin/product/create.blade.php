@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label for="field-1" class="col-sm-3 control-label">Fiyat </label>
                                         <div class="col-sm-5">
-                                            <input type="number" class="form-control" name="price">
+                                            <input type="number" class="form-control" name="price" onchange="setTwoNumberDecimal" min="0" max="1000" step="0.10" value="0.00">
                                         </div>
                                     </div>
 
@@ -97,6 +97,10 @@
                 separator: '-'
             });
         });
+
+        function setTwoNumberDecimal(event) {
+            this.value = parseFloat(this.value).toFixed(2);
+        }
     </script>
 
 

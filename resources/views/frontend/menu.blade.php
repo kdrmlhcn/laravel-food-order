@@ -21,7 +21,7 @@
                                             <p class="card-text">{{ $product->description }}</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-outline-danger">Satın Al</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-danger">Sepete Ekle</button>
                                                 </div>
                                                 <small class="text-muted">{{ $product->price }} ₺</small>
                                             </div>
