@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -95,5 +96,46 @@ class CartController extends Controller
 
             session()->flash('success', 'Product removed successfully');
         }
+    }
+
+    public function checkout()
+    {
+        $cart = session()->get('cart');
+
+        $jCart = json_encode($cart);
+
+        //dump($jCart);
+
+        $paymentTypes = collect(Order::paymentTypes())
+            ->mapWithKeys(function ($value, $key) {
+                return [
+                    $key => $value['name'],
+                ];
+            })->toArray();
+
+        return view('frontend.checkout', compact('paymentTypes'));
+    }
+
+    public function checkoutStore(Request $request)
+    {
+        $cart = session()->get('cart');
+        $jCart = json_encode($cart);
+
+        $order                  = new Order();
+        $order->first_name      = $request->first_name;
+        $order->last_name       = $request->last_name;
+        $order->email           = $request->email;
+        $order->phone           = $request->phone;
+        $order->address         = $request->address;
+        $order->order_items     = $jCart;
+        $order->comment         = $request->comment ?? NULL;
+        $order->payment_type    = $request->payment_type;
+        $order->order_total     = $request->order_total ?? '0';
+        $order->status_id       = $request->status_id ?? 0;
+        $order->save();
+
+        $request->session()->forget('cart');
+
+        return redirect()->route('frontend.home')->with('status','Siparişiniz bize ulaştı.');
     }
 }

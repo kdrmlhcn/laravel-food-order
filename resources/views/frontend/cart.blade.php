@@ -1,6 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <hr>
+    <section class="section-product-categories">
+        <h3 class="pre-title">
+            <span>SHOPPING CART</span>
+        </h3>
+    </section>
 
     <table id="cart" class="table table-hover table-condensed">
         <thead>
@@ -45,13 +49,10 @@
 
         </tbody>
         <tfoot>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total {{ $total }}</strong></td>
-        </tr>
         <tr>
             <td>
                 <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <a href="{{ url('/') }}" class="btn btn-success">Checkout <i class="fa fa-shopping-cart"></i></a>
+                <a href="{{ url('checkout') }}" class="btn btn-success">Checkout <i class="fa fa-shopping-cart"></i></a>
             </td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total {{ $total }}₺</strong></td>

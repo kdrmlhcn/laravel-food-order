@@ -59,17 +59,40 @@
 
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Ürünler </label>
+
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" value="{{ $order->order_items }}" disabled>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body with-table">
+                                            <table class="table table-bordered table-responsive">
+                                                <thead>
+                                                <tr>
+                                                    <th>Ürün Adı</th>
+                                                    <th>Adedi</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach(json_decode($order->order_items) as $key => $item)
+                                                    <tr>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td>{{ $item->quantity }}</td>
+                                                    </tr>
+                                                @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="field-1" class="col-sm-3 control-label">Sipariş Notu </label>
-                                <div class="col-sm-5">
-                                    <textarea class="form-control" disabled>{{ $order->comment }}</textarea>
+                            @if($order->comment)
+                                <div class="form-group">
+                                    <label for="field-1" class="col-sm-3 control-label">Sipariş Notu </label>
+                                    <div class="col-sm-5">
+                                        <textarea class="form-control" disabled>{{ $order->comment }}</textarea>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Ödeme Tipi </label>
@@ -85,7 +108,7 @@
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Toplam Tutar </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" value="{{ $order->order_total }}" disabled>
+                                    <input type="text" class="form-control" value="{{ $order->order_total }} ₺" disabled>
                                 </div>
                             </div>
 

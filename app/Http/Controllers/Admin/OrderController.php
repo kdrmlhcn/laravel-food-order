@@ -43,7 +43,7 @@ class OrderController extends Controller
         $order->phone           = $request->phone;
         $order->address         = $request->address;
         $order->order_items     = $request->order_items;
-        $order->comment         = $request->comment ?? '';
+        $order->comment         = $request->comment ?? NULL;
         $order->payment_type    = $request->payment_type;
         $order->order_total     = $request->order_total;
         $order->status_id       = $request->status_id;
@@ -95,7 +95,7 @@ class OrderController extends Controller
 
     public function data(Request $request)
     {
-        $query = Order::query()->orderBy('created_at', 'ASC');
+        $query = Order::query()->orderBy('status_id', 'ASC')->orderBy('created_at', 'DESC');
         $paymentTypes = collect(Order::paymentTypes())
             ->mapWithKeys(function ($value, $key) {
                 return [

@@ -1,6 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <hr class="featurette-divider">
+    <section class="section-product-categories">
+        <h3 class="pre-title">
+            <span>ABOUT US</span>
+        </h3>
+    </section>
 
     <div class="row featurette">
         <div class="col-md-7">

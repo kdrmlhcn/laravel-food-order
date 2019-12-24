@@ -9,11 +9,11 @@
         <div class="carousel-inner">
             @foreach($slides as $key => $slide)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <img src="{{ asset('uploads/slides/'.$slide->image) }}" alt="{{ $slide->title }}">
+                <img src="{{ asset('uploads/slides/'.$slide->image) }}" alt="{{ $slide->title ?? "CADA Food Order System" }}">
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>{{ $slide->title }}</h1>
-                        <p>{{ $slide->description }}</p>
+                        <h1>{{ $slide->title ?? "" }}</h1>
+                        <p>{{ $slide->description ?? "" }}</p>
                     </div>
                 </div>
             </div>

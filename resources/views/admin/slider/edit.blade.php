@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Slayt Başlığı </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="slug-name form-control" name="title" value="{{ $slide->name }}" required>
+                                    <input type="text" class="slug-name form-control" name="title" value="{{ $slide->title ?? "" }}">
                                     <span class="description">* Slayt başlığını giriniz</span>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Slayt Açıklaması </label>
                                 <div class="col-sm-5">
-                                    <textarea class="form-control" name="description" required>{{ $slide->description }}</textarea>
+                                    <textarea class="form-control" name="description">{{ $slide->description ?? "" }}</textarea>
                                     <span class="description">* Slayt açıklaması giriniz</span>
                                 </div>
                             </div>

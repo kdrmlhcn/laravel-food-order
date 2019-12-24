@@ -25,8 +25,6 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'=>'required',
-            'description'=>'required',
             'image'=>'required|mimes:jpeg,jpg,bmp,png'
         ]);
 
@@ -47,8 +45,8 @@ class SliderController extends Controller
         }
 
         $slide            = new Slider();
-        $slide->title     = $request->title;
-        $slide->description     = $request->description;
+        $slide->title     = $request->title ?? NULL;
+        $slide->description     = $request->description ?? NULL;
         $slide->image     = $imageName;
         $slide->save();
 
@@ -65,8 +63,6 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title'=>'required',
-            'description'=>'required',
             'image'=>'required|mimes:jpeg,jpg,bmp,png'
         ]);
 
@@ -87,8 +83,8 @@ class SliderController extends Controller
             $imageName = $slide->image;
         }
 
-        $slide->title = $request->title;
-        $slide->description = $request->description;
+        $slide->title = $request->title ?? NULL;
+        $slide->description = $request->description ?? NULL;
         $slide->image = $imageName;
         $slide->save();
 
