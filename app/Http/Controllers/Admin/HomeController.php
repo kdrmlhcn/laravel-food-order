@@ -28,12 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $orders = Order::query()->orderBy('created_at', 'ASC')->limit(10)->get();
-        $reservations = Reservation::query()->orderBy('date', 'ASC')->limit(10)->get();
-        $orderCount = Order::query()->count();
-        $reservationCount = Reservation::query()->count();
-        $productCount = Product::query()->count();
-        $contactCount = Contact::query()->count();
+        $orders             = Order::query()->orderBy('status_id', 'ASC')->orderBy('created_at', 'ASC')->limit(10)->get();
+        $reservations       = Reservation::query()->orderBy('date', 'ASC')->limit(10)->get();
+        $orderCount         = Order::query()->count();
+        $reservationCount   = Reservation::query()->count();
+        $productCount       = Product::query()->count();
+        $contactCount       = Contact::query()->count();
 
         return view('admin.home', compact('orders', 'reservations', 'orderCount', 'reservationCount','productCount', 'contactCount'));
     }
