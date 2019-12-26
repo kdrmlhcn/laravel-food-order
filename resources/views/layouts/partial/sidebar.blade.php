@@ -7,7 +7,7 @@
             <!-- logo -->
             <div class="logo">
                 <a href="{{ route('admin.home') }}">
-                    <img src="{{ asset('backend/assets/images/logo@2x.png') }}" width="120" alt="" />
+                    CADA FOOD
                 </a>
             </div>
 
